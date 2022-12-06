@@ -1,7 +1,7 @@
 
 //Copyright (c) 2022 Panshak Solomon
 
-import React from 'react'
+import React, { useEffect } from 'react'
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
 import SnackbarProvider from 'react-simple-snackbar'
 import Home from './components/Home/Home';
@@ -17,11 +17,20 @@ import Header from './components/Header/Header';
 import Settings from './components/Settings/Settings';
 import Forgot from './components/Password/Forgot'
 import Reset from './components/Password/Reset'
+import { gapi } from "gapi-script";
 
 function App() {
 
   const user = JSON.parse(localStorage.getItem('profile'))
-
+  useEffect(()=> {
+    gapi.load("client:auth2", () => {
+      gapi.client.init({
+        clientId:
+          "770910886899-hjfo0adjk5e20tv4o3o1tjcdq9hrkgoi.apps.googleusercontent.com",
+        plugin_name: "chat",
+      });
+    });
+  }, [])
   return (
     <div>
       <BrowserRouter>

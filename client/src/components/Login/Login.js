@@ -51,7 +51,8 @@ const Login = () => {
     }
 
     const googleSuccess = async (res) => {
-        console.log(res)
+        let { profileObj, googleId, tokenObj } = res;
+        console.log("check the object", profileObj, googleId, tokenObj, res)
         const result = res?.profileObj
         const token = res?.tokenId
         dispatch(createProfile({name: result?.name, email: result?.email, userId: result?.googleId, phoneNumber: '', businessName: '', contactAddress: '', logo: result?.imageUrl, website: ''}))
@@ -112,7 +113,7 @@ const Login = () => {
                     )}
                     onSuccess={googleSuccess}
                     onFailure={googleError}
-                    cookiePolicy="single_host_origin"
+                    cookiePolicy={"single_host_origin"}
                 />
                 </div>
           </div>

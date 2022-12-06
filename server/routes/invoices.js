@@ -1,5 +1,5 @@
 import express from 'express'
-import {createInvoice, updateInvoice, deleteInvoice, getInvoice, getInvoicesByUser, getTotalCount } from '../controllers/invoices.js'
+import {createInvoice, updateInvoice, deleteInvoice, getInvoice, getInvoicesByUser, getTotalCount, receivedInvoices } from '../controllers/invoices.js'
 
 const router = express.Router()
 

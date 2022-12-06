@@ -18,6 +18,18 @@ export const getInvoicesByUser = async (req, res) => {
     }
 }
 
+// get received invoices
+export const receivedInvoices = async (req, res) => {
+    const { email } = req.query;
+    console.log("email", email)
+    try {
+        const invoices = await InvoiceModel.find({ "client.email": email });
+        console.log("invoices", invoices)
+        res.status(200).json({ data: invoices });
+    } catch (error) {    
+        res.status(404).json({ message: error.message });
+    }
+}
 
 export const getTotalCount = async (req, res) => {
     const {searchQuery} = req.query;

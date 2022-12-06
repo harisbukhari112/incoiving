@@ -21,7 +21,7 @@ import profile from './routes/profile.js'
 import pdfTemplate from './documents/index.js'
 // import invoiceTemplate from './documents/invoice.js'
 import emailTemplate from './documents/email.js'
-
+import { receivedInvoices } from './controllers/invoices.js'
 const app = express()
 dotenv.config()
 
@@ -29,6 +29,7 @@ app.use((express.json({ limit: "30mb", extended: true})))
 app.use((express.urlencoded({ limit: "30mb", extended: true})))
 app.use((cors()))
 
+app.get('/receive', receivedInvoices)
 app.use('/invoices', invoiceRoutes)
 app.use('/clients', clientRoutes)
 app.use('/users', userRoutes)
